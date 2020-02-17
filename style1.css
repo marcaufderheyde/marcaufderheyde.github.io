@@ -11,6 +11,16 @@ table, th, td {
   font-family: Courier;
 }
 
+code { background-color: #114b5f; color:#f7f0f0;}
+
+pre code {
+  background-color: #114b5f;
+  color:#f7f0f0;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+
 #menu ul {
   list-style-type: none;
   margin: 0;

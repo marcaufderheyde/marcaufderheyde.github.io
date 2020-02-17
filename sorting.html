@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>DMIS 1A PRESENTATION</title>
+	<link rel=stylesheet type="text/css" href="style1.css">
+</head>
+<body>
+     <center><h1>About Us</h1></center> 
+<div id="menu">
+	<ul>
+	  <li><a href="index.html">Home</a></li>
+	  <li><a href="marc.html">Marc</a></li>
+	  <li><a href="sorting.html">Sorting algorithms in Java</a></li>
+	</ul>
+	</div> 
+	
+	<pre>
+		<code>
+			/**
+			 * Partition method used in QUICK-SORT
+			 * Implementation.
+			 * @param a
+			 * @param p
+			 * @param r
+			 * @return
+			 */
+			static int partition(Integer [] a, int p, int r) {
+				int pivot = a[r];
+				int i = p - 1;
+				for(int j = p; j <= r-1; j++) {
+					if(a[j] <= pivot) {
+						i = i + 1;
+						int temp = a[j];
+						a[j] = a[i];
+						a[i] = temp;
+					}
+				}
+				int temp = a[r];
+				a[r] = a[i+1];
+				a[i+1] = temp;
+				return i+1;
+			}
+			
+			/** 
+			 * Implementation of QUICK-SORT Sorting algorithm.
+			 * Uses the partition method defined above.
+			 * @param a
+			 * @param p
+			 * @param r
+			 */
+			public static void sort(Integer [] a, int p, int r) {
+				if (p < r) {
+					int q = partition(a,p,r);
+					sort(a,p,q-1);
+					sort(a,q+1,r);
+				}
+			}
+		</code>
+	</pre>
+<div>
+<ul>
+    <h3><li><mark><a href="marc.html">Marc</a></mark></li></h3>
+</ul> 
+</div> 
+</body>
+</html>

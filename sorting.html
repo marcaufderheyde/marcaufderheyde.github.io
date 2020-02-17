@@ -1,18 +1,21 @@
 <html>
 <head>
-	<title>DMIS 1A PRESENTATION</title>
+	<title>aufderheyde.me</title>
 	<link rel=stylesheet type="text/css" href="style1.css">
 </head>
 <body>
-     <center><h1>About Us</h1></center> 
+     <center><h1>Sorting algorithms in Java</h1></center> 
 <div id="menu">
 	<ul>
 	  <li><a href="index.html">Home</a></li>
 	  <li><a href="marc.html">Marc</a></li>
 	  <li><a href="sorting.html">Sorting algorithms in Java</a></li>
 	</ul>
-	</div> 
-	
+</div> 
+<br>
+	<div id="sorting">
+		=> Standard Qick-Sort implementation in Java
+	</div>
 	<pre>
 		<code>
 			/**
@@ -56,10 +59,112 @@
 			}
 		</code>
 	</pre>
-<div>
-<ul>
-    <h3><li><mark><a href="marc.html">Marc</a></mark></li></h3>
-</ul> 
-</div> 
+	<div id="sorting">
+		=> Median of three Quick-Sort implementation
+	</div>
+	<pre>
+		<code>
+			/**
+			 * QUICK-SORT implementation which uses a median of three
+			 * partitioning scheme to chose a pivot from the first,
+			 * last, and middle value of Array a.
+			 * @param a
+			 * @param p
+			 * @param r
+			 */
+			public static void getMedian(Integer [] a, int p, int r) {
+				int mid = a.length / 2;
+				Integer [] median = {a[p],a[mid],a[r]};
+				insertionSort(median);
+				if(median[1] == a[p]) {
+					int temp = a[r];
+					a[r] = median[1];
+					a[p] = temp;
+				}
+				else if(median[1] == a[mid]) {
+					int temp = a[r];
+					a[r] = median[1];
+					a[mid] = temp;
+				}
+			}
+			
+			/**
+			 * Variation of QUICK-SORT in which the median value
+			 * of the array is chosen as the initial pivot.
+			 * @param a
+			 * @param p
+			 * @param r
+			 */
+			public static void sortMedian(Integer [] a, int p, int r) {
+				getMedian(a, p, r);
+				if (p < r) {
+					int q = partition(a,p,r);
+					sort(a,p,q-1);
+					sort(a,q+1,r);
+				}
+			}
+		</code>
+	</pre>
+		<div id="sorting">
+		=> Quick-Sort implementation with 3 partition split
+	</div>
+	<pre>
+		<code>
+			/**
+			 * 1d. Partition method to use in 3wary partition scheme
+			 * QUICK-SORT
+			 * @param a
+			 * @param p
+			 * @param r
+			 * @return
+			 */
+			static int [] partition3Way(Integer [] a, int p, int r) {
+				int lessThan = p;
+				int i;
+				int greaterThan = r;
+				int pivot = a[p];
+				
+				for(i = p; i <= greaterThan; i++) {
+					if(a[i] < pivot) {
+						int temp = a[lessThan];
+						a[lessThan] = a[i];
+						a[i] = temp;
+						lessThan += 1;
+						i += 1;				
+					}
+					
+					else if(a[i] > pivot) {
+						int temp = a[i];
+						a[i] = a[greaterThan];
+						a[greaterThan] = temp;
+						greaterThan -= 1;
+					}
+					
+					else {
+						i += 1;
+					}
+				}
+				int [] threeWay = {lessThan, greaterThan};
+				return threeWay;
+			}
+			
+			/**
+			 * 1d. Variation of QUICK-SORT in which an array is
+			 * divided in 3 parts. Good for repetition of 
+			 * duplicates.
+			 * @param a
+			 * @param p
+			 * @param r
+			 */
+			public static void sort3Way(Integer [] a, int p, int r) {
+				if (p < r) {
+					int i = partition3Way(a,p,r)[0];
+					int j = partition3Way(a,p,r)[1];
+					sort3Way(a,p,i);
+					sort3Way(a,j,r);
+				}
+			}
+		</code>
+	</pre>
 </body>
 </html>

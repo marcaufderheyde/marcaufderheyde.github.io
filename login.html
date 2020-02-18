@@ -8,7 +8,7 @@
 	<link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-theme.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-	<center><h1>What's cracking?</h1></center>
+	<center><h1>Login</h1></center>
 	<div id="menu">
 	<ul>
 	  <li><a href="index.html">Home</a></li>
@@ -22,6 +22,12 @@
 		Please login to access the full site
 	</div>
 	<br>
+	<div class="container">
+	<h3 class="text-center">Simple Web Page</h3>
+		<div id="messageBox" class="jumbotron">
+			You are not logged in. Get outta here! Shoo! >:S
+		</div>
+	</div>
 	<br>
 	<br>
 	<hr>
@@ -30,7 +36,7 @@
 <script type="text/javascript">
   var oktaSignIn = new OktaSignIn({
     baseUrl: "{{ http://www.aufderheyde.me/ }}",
-    clientId: "{{ 0oa2avni5VK7BDvk94x6 }}",
+    clientId: "{{ 0oa2awdwoMIB8GHjX4x6 }}",
     authParams: {
       issuer: "default",
       responseType: ['token', 'id_token'],

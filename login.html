@@ -47,7 +47,10 @@
       issuer: "https://dev-329155.okta.com/oauth2/default",
       responseType: ["token", "id_token"],
       display: "page"
-    }
+    },
+	features: {
+		registration: true
+	}
   });
 
   if (oktaSignIn.token.hasTokensInUrl()) {

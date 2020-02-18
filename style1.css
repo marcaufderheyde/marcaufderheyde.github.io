@@ -84,7 +84,7 @@ mark {
   height: auto;
   position: relative;
   overflow: hidden;
-  padding: 34.37% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
+  padding: 100% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
 }
 
 .container img {
@@ -194,7 +194,7 @@ mark {
   height: auto;
   position: relative;
   overflow: hidden;
-  padding: 34.37% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
+  padding: 100% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
 }
 
 .container img {

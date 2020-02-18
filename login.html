@@ -17,14 +17,14 @@ css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGv
   <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
   <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-theme.css" type="text/css" rel="stylesheet"/>
 </head>
-  <body>
+ <body>
     <div class="container">
       <h1 class="text-center">Simple Web Page</h1>
-      <div class="jumbotron">
+      <div id="messageBox" class="jumbotron">
         You are not logged in. Get outta here! Shoo! >:S
       </div>
-	  <div id="sign-in-container"></div>
-	  <!-- use the Okta widget to power authentication! -->
+      <!-- where the sign-in form will be displayed -->
+      <div id="sign-in-container"></div>
     </div>
   </body>
   <script type="text/javascript">

@@ -157,6 +157,16 @@ filter:grayscale(0%);
 	  text-decoration: none;
 	  font-family:Helvetica;
 	}
+	
+	#menu b li a {
+	  display: block;
+	  color: #f7f0f0;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-family:Helvetica;
+	  background-color: #650042;
+	}
 
 	/* Change the link color to x on hover */
 	#menu li a:hover {

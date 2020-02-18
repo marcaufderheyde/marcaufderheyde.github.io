@@ -37,24 +37,9 @@
       <!-- where the sign-in form will be displayed -->
       <div id="sign-in-container"></div>
     </div>
-	{}
+	<h3><a href="https://dev-329155-admin.okta.com/login/admin/signout/">Click here to sign out</a></h3>
   </body>
   <script type="text/javascript">
-    var baseUrl = 'https://dev-329155.okta.com';
-	var xhr = new XMLHttpRequest();
-	if ("withCredentials" in xhr) {
-		xhr.onerror = function() {
-		  alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
-		}
-		xhr.onload = function() {
-			alert(this.responseText);
-		};
-		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
-		xhr.withCredentials = true;
-		xhr.send();
-	} else {
-		alert("CORS is not supported for this browser!")
-}
   var oktaSignIn = new OktaSignIn({
     baseUrl: "https://dev-329155.okta.com",
     clientId: "0oa2az2seHTsZvIQG4x6",

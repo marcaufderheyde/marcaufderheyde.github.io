@@ -74,30 +74,12 @@ mark {
   color: black;
 }
 
-.parent {
-  max-width: 481px;
+img {
+	object-fit: cover;
+	width: 481px;
+	height: 100%;
+	padding: 1%;
 }
-
-.container {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  padding: 34.37% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
-}
-
-.container img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .gallery img{
 padding: 5px;
 filter:grayscale(100%);
@@ -132,6 +114,10 @@ pre code {
   border: 1px solid #999;
   display: block;
   padding: 20px;
+}
+
+img {
+	padding: 1%;
 }
 
 #sorting {
@@ -182,30 +168,6 @@ pre code {
 mark {
   background-color: yellow;
   color: black;
-}
-
-.parent {
-  width: 720px;
-}
-
-.container {
-  display: block;
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  padding: 5% 0 0 0; /* 34.37% = 100 / (w / h) = 100 / (640 / 220) */
-}
-
-.container img {
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 .gallery img{

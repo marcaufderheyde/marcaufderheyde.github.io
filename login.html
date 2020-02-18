@@ -32,12 +32,10 @@
 		<br>
 		<br>
 		<hr>
-		<h3><a href="https://dev-329155.okta.com">Cick here to register an account</a></h3>
       </div>
       <!-- where the sign-in form will be displayed -->
       <div id="sign-in-container"></div>
     </div>
-	<center><h3><a href="https://dev-329155-admin.okta.com/login/admin/signout/">Click here to sign out</a></h3></center>
   </body>
   <script type="text/javascript">
   var oktaSignIn = new OktaSignIn({
@@ -50,6 +48,9 @@
     },
 	features: {
 		registration: true
+	}
+	authScheme: {
+		'SESSION';
 	}
   });
 

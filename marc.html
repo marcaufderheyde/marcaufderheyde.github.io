@@ -27,12 +27,17 @@
     xhr.onerror = function() {
       alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
     }
-    xhr.onload = function() {
-        alert(this.responseText);
-    };
     xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
+	xhr.responseType = 'json';
     xhr.withCredentials = true;
     xhr.send();
+	xhr.onload = function() {
+	    let responseObj = xhr.response;
+        alert(this.responseText);
+		if (responseObj.status == "ACTIVE") {
+		alert("HELLO OMG");
+	};
+    };
 } else {
     alert("CORS is not supported for this browser!")
 }

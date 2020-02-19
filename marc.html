@@ -30,6 +30,7 @@
 		xhr.onload = function() {
 			var data = this.responseText;
 			var jsonResponse = JSON.parse(data);
+			alert(data);
 			alert(jsonResponse["status"]);
 			if (jsonResponse["status"] == "ACTIVE") {
 				alert("HELLO OMG. SESSION STILL ACTIVE");

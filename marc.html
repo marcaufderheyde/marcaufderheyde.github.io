@@ -2,7 +2,10 @@
 <head>
 	<title>aufderheyde.me</title>
 	<link rel=stylesheet type="text/css" href="style1.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/js/okta-sign-in.min.js" type="text/javascript"></script>
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.6.0/css/okta-theme.css" type="text/css" rel="stylesheet"/>	
 </head>
 <body>
 	<center><h1>About Marc</h1></center>
@@ -17,4 +20,21 @@
 	<center><img src="goofy.JPG" alt="This is a picture of my father and me."></center>
 
 </body>
+ <script type="text/javascript">
+	var baseUrl = 'https://dev-329155.okta.com';
+	var xhr = new XMLHttpRequest();
+	if ("withCredentials" in xhr) {
+    xhr.onerror = function() {
+      alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
+    }
+    xhr.onload = function() {
+        alert(this.responseText);
+    };
+    xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
+    xhr.withCredentials = true;
+    xhr.send();
+} else {
+    alert("CORS is not supported for this browser!")
+}
+ </script>
 </html>

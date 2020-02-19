@@ -30,10 +30,8 @@
 		xhr.onload = function() {
 			var data = this.responseText;
 			var jsonResponse = JSON.parse(data);
-			alert(data);
-			alert(jsonResponse["status"]);
 			if (jsonResponse["status"] == "ACTIVE") {
-				alert("HELLO OMG. SESSION STILL ACTIVE");
+				alert("HELLO OMG. SESSION STILL ACTIVE. THIS WORKS!");
 			}
 		};
 		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);

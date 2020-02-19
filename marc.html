@@ -23,19 +23,24 @@
 	<script type="text/javascript">
 		var baseUrl = 'https://dev-329155.okta.com';
 		var xhr = new XMLHttpRequest();
-		var data = xhr.responseText;
-		var jsonResponse = JSON.parse(data);
+		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
+		xhr.withCredentials = true;
+
 		if ("withCredentials" in xhr) {
 		xhr.onerror = function() {
 		  alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
 		}
-		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
-		xhr.withCredentials = true;
 		xhr.send();
-		xhr.onload = function() {
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState == 4) {
+				if(xhr.status == 200) {
+					var data = xhr.responseText;
+				}
+			}
+			var jsonResponse = JSON.parse(data);
 			if (jsonResponse["status"] == "ACTIVE") {
 				alert("HELLO OMG. SESSION STILL ACTIVE");
-			};
+			}
 		};
 	} else {
 		alert("CORS is not supported for this browser!")

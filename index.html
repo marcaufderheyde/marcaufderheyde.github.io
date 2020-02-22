@@ -14,6 +14,15 @@
 	  <li><a href="login.html">Login</a></li>
 	</ul>
 	</div>
+		<div id="sorting">
+			You are now logged into aufderheyde.me<br>
+			Thank you for taking your time to visit this website.<br>
+			If you have noticed any bugs or issues with the website,<br>
+			Please contact Marc at marcaufderheyde@gmail.com.<br>
+			Thank you :)<br>
+			Will hopefully make a lot of cool things be happening here soon!<br>
+			- Marc
+		</div>
 	<script type="text/javascript">
 		var baseUrl = 'https://dev-329155.okta.com';
 		var xhr = new XMLHttpRequest();
@@ -25,15 +34,10 @@
 			var data = this.responseText;
 			var jsonResponse = JSON.parse(data);
 			if (jsonResponse["status"] == "ACTIVE") {
-					<div id="sorting">
-						You are now logged into aufderheyde.me<br>
-						Thank you for taking your time to visit this website.<br>
-						If you have noticed any bugs or issues with the website,<br>
-						Please contact Marc at marcaufderheyde@gmail.com.<br>
-						Thank you :)<br>
-						Will hopefully make a lot of cool things be happening here soon!<br>
-						- Marc
-					</div>
+				document.getElementById("sorting").style.display = "show";
+			}
+			else{
+				document.getElementById("menu").style.display = "none";
 			}
 		};
 		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);

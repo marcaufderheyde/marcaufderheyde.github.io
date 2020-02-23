@@ -11,9 +11,10 @@ table, th, td {
   font-family: Courier;
 }
 
-code { background-color: #114b5f; color:#f7f0f0;}
+code { background-color: #114b5f; color:#f7f0f0;max-width: 720px;}
 
 pre code {
+  max-width: 720px;
   background-color: #114b5f;
   color:#f7f0f0;
   border: 1px solid #999;

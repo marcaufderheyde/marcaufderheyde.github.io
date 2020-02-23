@@ -15,6 +15,7 @@ code { background-color: #114b5f; color:#f7f0f0;max-width: 720px;}
 
 pre code {
   max-width: 720px;
+  overflow-wrap: normal;
   background-color: #114b5f;
   color:#f7f0f0;
   border: 1px solid #999;
@@ -114,6 +115,7 @@ filter:grayscale(0%);
 
 	pre code {
 	  max-width: 481px;
+	  overflow-wrap: normal;
 	  background-color: #114b5f;
 	  color:#f7f0f0;
 	  border: 1px solid #999;

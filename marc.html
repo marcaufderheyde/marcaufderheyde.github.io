@@ -18,6 +18,32 @@
 		</ul>
 		</div>
 
+	<script type="text/javascript">
+		var baseUrl = 'https://dev-329155.okta.com';
+		var xhr = new XMLHttpRequest();
+		if ("withCredentials" in xhr) {
+			xhr.onerror = function() {
+				alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
+		}
+		xhr.onload = function() {
+			var data = this.responseText;
+			var jsonResponse = JSON.parse(data);
+			if (!(jsonResponse["status"] == "ACTIVE")) {
+				document.getElementById("sensitive").style.display = "none";
+			}
+			else{
+				document.getElementById("sensitive").style.display = "show";
+			}
+		};
+		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
+		xhr.withCredentials = true;
+		xhr.send();
+	} else {
+		alert("CORS is not supported for this browser!")
+	}
+
+	</script>
+
 <div id="sensitive">
 	<pre>
 		<code>
@@ -33,30 +59,4 @@
 </div>
 		<center><img src="goofy.JPG" alt="This is a picture of my father and me."></center>
 	</body>
-	
-	<script type="text/javascript">
-		var baseUrl = 'https://dev-329155.okta.com';
-		var xhr = new XMLHttpRequest();
-		if ("withCredentials" in xhr) {
-			xhr.onerror = function() {
-				alert('Invalid URL or Cross-Origin Request Blocked.  You must explicitly add this site (' + window.location.origin + ') to the list of allowed websites in the administrator UI');
-		}
-		xhr.onload = function() {
-			var data = this.responseText;
-			var jsonResponse = JSON.parse(data);
-			if (jsonResponse["status"] == "ACTIVE") {
-				document.getElementById("sensitive").style.display = "show";
-			}
-			else{
-				document.getElementById("sensitive").style.display = "none";
-			}
-		};
-		xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
-		xhr.withCredentials = true;
-		xhr.send();
-	} else {
-		alert("CORS is not supported for this browser!")
-	}
-
-	</script>
 </html>

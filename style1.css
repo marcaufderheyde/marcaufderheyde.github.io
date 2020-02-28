@@ -11,9 +11,11 @@ table, th, td {
   font-family: Courier;
 }
 
-code { background-color: #114b5f; color:#f7f0f0;max-width: 720px;}
+code { background-color: #114b5f; color:#f7f0f0; float: center; text-align: left; max-width: 720px;}
 
 pre code {
+  float: center;
+  text-align: left;
   max-width: 720px;
   overflow-wrap: normal;
   background-color: #114b5f;
@@ -29,6 +31,7 @@ img {
 
 #sorting {
 	font-family: "Lucida Console", Monaco, monospace;
+	text-align: left;
 	font-size: 20px;
 	letter-spacing: 1.2px;
 	word-spacing: 0.6px;
@@ -104,16 +107,19 @@ filter:grayscale(0%);
 	h1 {text-decoration:bold; color:#d6008c; font-family:Verdana; }
 	h2 {color:#650042; font-family:Verdana; }
 	h3 {color:#C8bdbd; font-family:Verdana; }
-	body {background-color:#114b5f ; text-align:left; margin-left:2%; margin-right:2%;}
+	body {background-color:#114b5f ; float: center; text-align:left; margin-left:2%; margin-right:2%;}
 			
 	table, th, td {
 	  border: 1px solid #650042;
 	  font-family: Courier;
 	}
 
-	code { background-color: #114b5f; color:#f7f0f0; font-size: 3px; max-width: 481px;}
+	code { background-color: #114b5f; color:#f7f0f0; font-size: 3px; float: center;
+		text-align: left; max-width: 481px;}
 
 	pre code {
+	  float: center;
+	  text-align: left;
 	  max-width: 481px;
 	  overflow-wrap: normal;
 	  background-color: #114b5f;
@@ -126,6 +132,7 @@ filter:grayscale(0%);
 
 	#sorting {
 		font-family: "Lucida Console", Monaco, monospace;
+		text-align: left;
 		font-size: 20px;
 		letter-spacing: 1.2px;
 		word-spacing: 0.6px;

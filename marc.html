@@ -17,7 +17,20 @@
 		  <li><a href="login.html">Login</a></li>
 		</ul>
 		</div>
-		<div id="sensitive"></div>
+		<div>
+		<input type="button" id="btn" class="btn btn-default" value="click me">
+		</div>
+
+		<div id="sensitive" style="display:none">
+		</div>
+
+		<script type="text/javascript">
+		$(document).ready(function () {
+			$("#btn").click(function () {
+				$("#sensitive").toggle();
+			});
+		});
+		</script>
 	<script type="text/javascript">
 		var baseUrl = 'https://dev-329155.okta.com';
 		var xhr = new XMLHttpRequest();

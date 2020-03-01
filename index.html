@@ -7,16 +7,22 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('button').mouseover(function(){
-				$(this).animate({ paddingTop: "15px" }, 100);
+				$(this).animate({ paddingTop: "15px", line-height: 2.0; }, 100);
 			},);
 			$('button').mouseout(function(){
-				$(this).animate({ paddingTop: "5px" }, 100);
+				$(this).animate({ paddingTop: "5px", line-height: 2.0; }, 100);
 			});
 			$('img').mouseover(function(){
 				$(this).animate({ paddingTop: "15px" }, 100);
 			},);
 			$('img').mouseout(function(){
 				$(this).animate({ paddingTop: "5px" }, 100);
+			});
+			$('p').mouseover(function(){
+				$(this).animate({ paddingTop: "15px", line-height: 2.0; }, 100);
+			},);
+			$('p').mouseout(function(){
+				$(this).animate({ paddingTop: "5px", line-height: 2.0; }, 100);
 			});
 			});
 	</script>

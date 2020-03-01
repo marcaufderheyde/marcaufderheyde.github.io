@@ -37,7 +37,7 @@
 		</div>
 		<br>
 
-		<div id="sensitive" style="display:none">
+		<div id="sensitive1" style="display:none">
 		</div>
 		<script type="text/javascript">
 			var baseUrl = 'https://dev-329155.okta.com';
@@ -46,10 +46,10 @@
 				var data = this.responseText;
 				var jsonResponse = JSON.parse(data);
 				if (jsonResponse["status"] == "ACTIVE") {
-					document.getElementById("sensitive").innerHTML = '<p class="content">Hey everyone. So, you guys want to know about me? My name is Marc Auf der Heyde, Im 21 years old,I live in Glasgow currently and study computing science. I enjoy acting as well and like doing things with my family. Those were weird to combine in a sentence but hey. Also, watch, out, CONNECTERCISE is coming out soon!!- Marc</p>';
+					document.getElementById("sensitive1").innerHTML = '<p class="content">Hey everyone. So, you guys want to know about me? My name is Marc Auf der Heyde, Im 21 years old,I live in Glasgow currently and study computing science. I enjoy acting as well and like doing things with my family. Those were weird to combine in a sentence but hey. Also, watch, out, CONNECTERCISE is coming out soon!!- Marc</p>';
 				}
 				else{
-					document.getElementById("sensitive").innerHTML = '<p class="content">Please login for full site access.</p>';
+					document.getElementById("sensitive1").innerHTML = '<p class="content">Please login for full site access.</p>';
 				}
 			};
 			xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);
@@ -64,7 +64,7 @@
 		<script type="text/javascript">
 		$(document).ready(function () {
 			$("#btn").click(function () {
-				$("#sensitive").toggle();
+				$("#sensitive1").toggle();
 			});
 		});
 		</script>

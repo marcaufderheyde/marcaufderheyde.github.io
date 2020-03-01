@@ -34,12 +34,12 @@
 			</ul>
 		</div>
 		<br>
-		<div id="sensitive" style="display:none">
+		<div id="sensitive" style="display:none;">
 		</div>
 		<script type="text/javascript">
 			var baseUrl = 'https://dev-329155.okta.com';
 			var xhr = new XMLHttpRequest();
-			xhr.load = function() {
+			xhr.onload = function() {
 				var data = this.responseText;
 				var jsonResponse = JSON.parse(data);
 				if (jsonResponse["status"] == "ACTIVE") {

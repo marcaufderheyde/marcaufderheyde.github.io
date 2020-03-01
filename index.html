@@ -43,10 +43,10 @@
 				var data = this.responseText;
 				var jsonResponse = JSON.parse(data);
 				if (jsonResponse["status"] == "ACTIVE") {
-					document.getElementById("sensitive").innerHTML = "<p class="content">You are now logged into aufderheyde.me. Thank you for taking your time to visit this website. If you have noticed any bugs or issues with the website, Please contact Marc at marcaufderheyde@gmail.com. Thank you :) Will hopefully make a lot of cool things be happening here soon! - Marc</p>";
+					document.getElementById("sensitive").innerHTML = '<p class="content">You are now logged into aufderheyde.me. Thank you for taking your time to visit this website. If you have noticed any bugs or issues with the website, Please contact Marc at marcaufderheyde@gmail.com. Thank you :) Will hopefully make a lot of cool things be happening here soon! - Marc</p>';
 				}
 				else{
-					document.getElementById("sensitive").innerHTML = "<p class="content">Please login for full site access.</p>";
+					document.getElementById("sensitive").innerHTML = '<p class="content">Please login for full site access.</p>';
 				}
 			};
 			xhr.open('GET', baseUrl + '/api/v1/sessions/me', true);

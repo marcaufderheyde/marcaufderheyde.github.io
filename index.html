@@ -19,6 +19,9 @@
   <!-- GitHub widget -->
   <link href="github-widget/github-widget.css" rel="stylesheet" type="text/css" />
 
+  <script defer src="node_modules/swup/dist/swup.min.js"></script>
+  <script defer src="script.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -39,7 +42,10 @@
             <a class="nav-link js-scroll-trigger" href="#github">Github Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="privateshare/">privateshare</a>
+            <a class="nav-link js-scroll-trigger" href="/privateshare/">privateshare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/tech.html">tech</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
@@ -49,60 +55,62 @@
     </div>
   </nav>
 
-  <header class="bg-primary text-white">
-    <div class="container text-center">
-      <h1>Welcome to aufderheyde.me</h1>
-      <p class="lead">Here you'll find information about Marc Auf der Heyde, a 3rd year Computing Science Student at the University of Glasgow</p>
-      <img src="images/goofy.JPG" alt="This is a picture of my father and me.">
-    </div>
-  </header>
+  <main id="swup" class="transition-fade">
+    <header class="bg-primary text-white">
+      <div class="container text-center">
+        <h1>Welcome to aufderheyde.me</h1>
+        <p class="lead">Here you'll find information about Marc Auf der Heyde, a 3rd year Computing Science Student at the University of Glasgow</p>
+        <img src="images/goofy.JPG" alt="This is a picture of my father and me.">
+      </div>
+    </header>
 
-  <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>About Marc</h2>
-          <p class="lead">Marc is currently living in Glasgow, where he attends the University of Glasgow and is in his third year of a computing scinece bachelors of science. Some of Marc's skills are:</p>
-          <ul>
-            <li>In depth experience with Python programming language</li>
-            <li>Well versed with Java programming language</li>
-            <li>Experience using HTML, CSS, JavaScript, Ajax, jQuery and Django for building and deploying a web application</li>
-            <li>Currently learning android app development as well as music production in Ableton Live 10</li>
-          </ul>
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>About Marc</h2>
+            <p class="lead">Marc is currently living in Glasgow, where he attends the University of Glasgow and is in his third year of a computing scinece bachelors of science. Some of Marc's skills are:</p>
+            <ul>
+              <li>In depth experience with Python programming language</li>
+              <li>Well versed with Java programming language</li>
+              <li>Experience using HTML, CSS, JavaScript, Ajax, jQuery and Django for building and deploying a web application</li>
+              <li>Currently learning android app development as well as music production in Ableton Live 10</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="github" class="bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>GitHub Projects and others</h2>
-          <p class="lead">Here you will find a list of current and past projects Marc has worked on:</p>
-          <div class="github-widget" data-user="marcaufderheyde"></div>
-          <ul>
-            <li>Find more information on privateshare, a fully functioning server and client running on python sockets: <a href="privateshare/">Here</a></li>
-            <li>Theyoungauthors.com, a free publishing platform for young writers where they can get free feedback from peers and engage with other like-minded writers: <a href="https://www.theyoungauthors.com/">theyoungauthors.com</a></li>
-          </ul>
+    <section id="github" class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>GitHub Projects and others</h2>
+            <p class="lead">Here you will find a list of current and past projects Marc has worked on:</p>
+            <div class="github-widget" data-user="marcaufderheyde"></div>
+            <ul>
+              <li>Find more information on privateshare, a fully functioning server and client running on python sockets: <a href="privateshare/">Here</a></li>
+              <li>Theyoungauthors.com, a free publishing platform for young writers where they can get free feedback from peers and engage with other like-minded writers: <a href="https://www.theyoungauthors.com/">theyoungauthors.com</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2>Contact Marc</h2>
-          <p class="lead">Here are some places you can contact Marc:</p>
-          <ul>
-            <li>Email: <a href="mailto:marcaufderheyde@gmail.com">marcaufderheyde@gmail.com</a></li>
-          </ul>
+    <section id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2>Contact Marc</h2>
+            <p class="lead">Here are some places you can contact Marc:</p>
+            <ul>
+              <li>Email: <a href="mailto:marcaufderheyde@gmail.com">marcaufderheyde@gmail.com</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">

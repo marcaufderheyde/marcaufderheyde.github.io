@@ -14,6 +14,9 @@
 
   <!-- Custom styles for this template -->
   <link href="css/scrolling-nav.css" rel="stylesheet">
+
+  <script defer src="node_modules/swup/dist/swup.min.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -44,147 +47,35 @@
   <div class="container h-100">
     <div class="row h-100 align-items-center">
       <div class="col-12 text-center">
-        <h1 class="font-weight-light">Welcome to privateshare</h1>
-        <p class="lead">A simple file service application using the Python socekt library</p>
+        <h1 class="font-weight-light">Welcome to Tech</h1>
+        <p class="lead">I don't know what to put here just yet...</p>
         <br>
         <div class="row">
             <div class="col">
-                <a href="#downloads" class="button js-scroll-trigger" style="vertical-align:middle">Downloads</a>
+                <a href="#" class="button js-scroll-trigger" style="vertical-align:middle">Hello</a>
             </div>
             <div class="col">
-                <a href="#serverinstallation" class="button js-scroll-trigger" style="vertical-align:middle">Server Install</a>
+                <a href="#" class="button js-scroll-trigger" style="vertical-align:middle">My</a>
             </div>
             <div class="col">
-                <a href="#clientinstallation" class="button js-scroll-trigger" style="vertical-align:middle">Client Install</a>
+                <a href="#" class="button js-scroll-trigger" style="vertical-align:middle">Button</a>
             </div>
             <div class="col">
-                <a href="#faqs" class="button js-scroll-trigger" style="vertical-align:middle">FAQ's</a>
+                <a href="#" class="button js-scroll-trigger" style="vertical-align:middle">Friends</a>
             </div>
       </div>
     </div>
   </div>
 </header>
 
+<main id="swup" class="transition-fade">
 <!-- Page Content -->
 <section class="py-5">
   <div class="container">
-  <section id="downloads">
-    <h2 class="font-weight-light">Downloads</h2>
-    <hr>
-    <br>
-    <ul>
-        <h3 class="font-weight-light">Widnows:</h3>
-        <br>
-        <li><h4 class="font-weight-light">Download Server here: <a class="button" href="https://github.com/marcaufderheyde/privateshare-windows/raw/master/Server/dist/serverApp.exe">Click me</a><h4></li>
-        <li><h4 class="font-weight-light">Download Client here: <a class="button" href="https://github.com/marcaufderheyde/privateshare-windows/raw/master/Client/dist/clientApp.exe">Click me</a><h4></li>
-    </ul>
-    <br>
-    <ul>
-        <h3 class="font-weight-light">Mac OS X</h3>
-        <br>
-        <li><h4 class="font-weight-light">Download Server here: <a class="button" href="https://github.com/Vivinen/privateshare-mac/blob/master/Server/dist/serverApp">Click me</a><h4></li>
-        <li><h4 class="font-weight-light">Download Client here: <a class="button" href="https://github.com/Vivinen/privateshare-mac/blob/master/Client/dist/clientApp">Click me</a><h4></li>
-    </ul>
-    </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <section id="serverinstallation">
-    <h2 class="font-weight-light">Installation</h2>
-    <hr>
-    <br>
-    <ol>
-        <br>
-        <hr>
-        <h4 class="font-weight-light">Server Installation</h4>
-        <br>
-        <h5 class="font-weight-light"><li>Download the client or server from the links above. Which you need will depend on what you are trying to do (download/upload).</li></h5>
-        <br>
-        <h5 class="font-weight-light"><li>Open serverApp.exe/serverApp.app and wait for the GUI to load like in the image below.</li></h5>
-        <br>
-        <img src="images/server1.png" alt="This is the serverApp upon initial loading">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>Enter the port number you wish the server socket to bind to like in the image below. Also enter a server password which will securely encrypt the data being transferred from server to client. The client must enter this password to access the server.</li></h5>
-        <br>
-        <img src="images/server2.png" alt="This is the serverApp with a port number entered">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>Click Run Server to start the server.</li><h5>
-        <br>
-        <h5 class="font-weight-light"><li>If prompted to allow features of the app through Windows Defender Firewall, click Allow Access like the image below.</li></h5>
-        <br>
-        <img src="images/server3.png" alt="This is is the Windows Defender Firewall Prompt after clicking run server">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>The Server may appear frozen after accepting this prompt. If so, do not worry, the server is working! This is a bug to do with GUI's and infinite loops, but not to worry, the server is working!</li></h5>
-        <br>
-        <h5 class="font-weight-light"><li>Last but not least, in future when opening the server and connecting to a port, it will look look like this.</li></h5>
-        <br>
-        <img src="images/server4.png" alt="This is the serverApp unfrozed and running">
-        <br>
-        <br>
-    </ol>
-    </section>
-    <section id="clientinstallation">
-    <ol>
-        <hr>
-        <h4 class="font-weight-light">Client Installation</h4>
-        <br>
-        <h5 class="font-weight-light"><li>Download the client or server from the links above. Which you need will depend on what you are trying to do (download/upload).</li></h5>
-        <br>
-        <h5 class="font-weight-light"><li>Open clientApp.exe/clientApp.app and wait for the GUI to load like the image below.</li></h5>
-        <br>
-        <img src="images/client1.png" alt="Client Upon Loading initially">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>Enter the IP address of the server you are trying to connect to as well as the port number the server is bound to (these credentials are usually provided by the person maintaining the server). Please also enter the server password which is specified by the server maintainer.</li><h5>
-        <br>
-        <img src="images/client2.png" alt="Client with entered credentials">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>From here you can connect with the server by selecting one of the options from the menu. "Put", uploads a file with specified filename to the server. "Get" downloads a file with specified filename from the server. "List", retrieves a list of available files from the server which can be downloaded by the client.</li></h5>
-        <br>
-        <h5 class="font-weight-light"><li>Start with the "List" command to see what's available on the server.</li></h5>
-        <br>
-        <img src="images/client3.png" alt="List command of clientApp">
-        <img src="images/client3.1.png" alt="List command of clientApp">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>To download a file from the given list, change the option to "Get" from the operation menu, choose a file, and type that filename into the box at the bottom of the application. Then press the "Put/Get/List" button to begin the download. * Note, files will be downloaded by default to the same directory in which clientApp.exe/clientApp.app is located.</li></h5>
-        <br>
-        <img src="images/client4.png" alt="Get operation of clientApp">
-        <img src="images/client4.1.png" alt="Get operation of clientApp">
-        <br>
-        <br>
-        <h5 class="font-weight-light"><li>To upload file to the server, change the option to "Put" from the operation menu, choose a file from the directory in which clientApp.exe/clientApp.app is located in, and enter the filename into the box at the bottom of the application. Then press the "Put/Get/List" button to begin the upload.
-        <br>
-        <br>
-        <img src="images/client5.png" alt="Upload operation of clientApp">
-        <img src="images/client5.1.png" alt="Upload operation of clientApp">
-    </ol>
-    <br>
-    <br>
-    </section>
-    <br>
-    <br>
-    <section id="faqs">
-    <h2 class="font-weight-light">Frequently Asked Questions</h2>
-    <hr>
-    <br>
-    <ol>
-    <h3 class="font-weight-light"><li>Is privateshare safe to use?</li></h3>
-    <br>
-    <h4 class="font-weight-light">Privateshare is comepletely safe to use in the sense that all source code involved in the program is open source and available for inspection on GitHub. AES encryption is used to encrypt data serverside before sending any packets and a unique request cryptographic key is generated per request and shared with the client if a correct password is entered.</h4>
-    <br>
-    <h3 class="font-weight-light"><li>Is privateshare legal to use?</li></h3>
-    <br>
-    <h4 class="font-weight-light">privateshare is completely legal to use for sharing files. That being said, the creator of privateshare does not condone the use of this software for sharing any copyrighted materials, as well as any other nefarious uses for which this software may be abused.</h4>
-    <br>
-    </section>
+    <h4>Welcome to Tech</h4>
   </div>
 </section>
+</main>
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">

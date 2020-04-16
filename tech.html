@@ -120,9 +120,8 @@
       <div class="footer">
         <p>&copy aufderheyde.me</p>
       </div>
+      <pre id='object'></pre>
   </div>
-
-    <pre id='object'></pre>
 
   </section>
 </section>
@@ -154,11 +153,14 @@
 
     //Data Object Change Listener
     const preObject = document.getElementById('object');
-    const dbRefObject = database.ref().child('object');
+    const dbRefObject = database.ref().child('issue');
     
     dbRefObject.on('value', snap => {
-    
-      console.log(snap.val()); 
+      var data = snap.val()
+      console.log(data); 
+      console.log(data.assigned)
+      console.log(data.severity)
+      console.log(data.description)
       preObject.innerText = JSON.stringify(snap.val(), null, 3);
     
     }, function(error) {

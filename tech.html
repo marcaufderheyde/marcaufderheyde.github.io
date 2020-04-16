@@ -9,7 +9,7 @@
 
   <title>Welcome to privateshare</title>
 
-  <link rel='icon' href='images/sassy.PNG' type='image/x-icon'/ >
+  <link rel='icon' href='images/sassy.png' type='image/x-icon'/ >
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -149,7 +149,71 @@
   firebase.initializeApp(firebaseConfig);
   var database = firebase.database();
 
-  fetchDatabaseInfo(database);
+  fetchDatabaseInfo();
+
+  document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+
+  function saveIssue(e) {
+    var issueId = chance.guid();
+    var issueDesc = document.getElementById('issueDescInput').value;
+    var issueSeverity = document.getElementById('issueSeverityInput').value;
+    var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
+    var issueStatus = 'Open';
+    database.ref().child('issues').push({
+        issueId: issueId,
+        issueDesc: issueDesc,
+        issueSeverity: issueSeverity,
+        issueAssignedTo: issueAssignedTo,
+        issueStatus: issueStatus
+    })
+    document.getElementById('issueInputForm').reset();
+   
+    fetchDatabaseInfo();
+    
+    e.preventDefault(); 
+  }
+
+  
+  function setStatusClosed (key) {
+    database.ref().child('issues').orderByKey().equalTo(key).on('value', function(snapshot) {
+        console.log(snapshot.val()[key]);
+    })
+    var updates = {};
+    updates['/issues/' + key + '/issueStatus'] = 'Closed';
+    database.ref().update(updates)
+    fetchDatabaseInfo();
+  }
+
+  function deleteIssue (key) {
+    database.ref('/issues/' + key).remove();
+    fetchDatabaseInfo();
+  }
+
+  function fetchDatabaseInfo () {
+    //Data Object Change Listener
+    const preObject = document.getElementById('issuesList');
+    const dbRefObject = database.ref().child('issues');
+    preObject.innerHTML = "";
+    dbRefObject.on('value', function(snap) {
+        snap.forEach(function(childNodes){
+            preObject.innerHTML +=   '<div class="well">'+
+            '<hr>' +
+            '<h6>Issue ID: ' + childNodes.val().issueId + '</h6>'+
+            '<p><span class="label label-info">' + childNodes.val().issueStatus + '</span></p>'+
+            '<h3>' + childNodes.val().issueDesc + '</h3>'+
+            '<p><span class="glyphicon glyphicon-time"></span> ' + childNodes.val().issueSeverity + ' | '+
+            '<span class="glyphicon glyphicon-user"></span> ' + childNodes.val().issueAssignedTo + '</p>'+
+            '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosed(\''+childNodes.key+'\')">Close</a> '+
+            '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssue(\''+childNodes.key+'\')">Delete</a>'+
+            '<hr><br>' +
+            '</div>';
+        })    
+    }, function(error) {
+      // The fetch failed.
+      console.error(error);
+    }); 
+  }
+
 
   </script>
 

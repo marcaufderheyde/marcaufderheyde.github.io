@@ -134,6 +134,7 @@
   </footer>
 
   <script>
+    (function(){
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyDOz6IE7U5GTnsUA4k2y0VSgOpQdND8J2Q",
@@ -155,14 +156,14 @@
     
     dbRefObject.on('value', snap => {
     
-    console.log(snap.val()); 
-    preObject.innerText = JSON.stringify(snap.val(), null, 3);
+      console.log(snap.val()); 
+      preObject.innerText = JSON.stringify(snap.val(), null, 3);
     
     }, function(error) {
       // The fetch failed.
       console.error(error);
     }); 
-
+  }());
   </script>
 
   <!-- Bootstrap core JavaScript -->

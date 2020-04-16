@@ -29,8 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function fetchIssues () {
-    var issues = JSON.parse(localStorage.getItem('issues'));
+function fetchIssuesFirebase () {
+    var issues = firebase.database().ref('issues').once('value');
     var issuesList = document.getElementById('issuesList');
     
     issuesList.innerHTML = '';
@@ -48,15 +48,15 @@ function fetchIssues () {
                                 '<h3>' + desc + '</h3>'+
                                 '<p><span class="glyphicon glyphicon-time"></span> ' + severity + ' '+
                                 '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>'+
-                                '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosed(\''+id+'\')">Close</a> '+
-                                '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssue(\''+id+'\')">Delete</a>'+
+                                '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosedFirebase(\''+id+'\')">Close</a> '+
+                                '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssueFirebase(\''+id+'\')">Delete</a>'+
                                 '</div>';
     }
   }
 
-document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+document.getElementById('issueInputForm').addEventListener('submit', saveToFirebaseIssue());
 
-  function saveIssue(e) {
+  function saveToFirebaseIssue(e) {
     var issueId = chance.guid();
     var issueDesc = document.getElementById('issueDescInput').value;
     var issueSeverity = document.getElementById('issueSeverityInput').value;
@@ -69,27 +69,32 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
       assignedTo: issueAssignedTo,
       status: issueStatus
     }
-    
-    if (localStorage.getItem('issues') === null) {
-      var issues = [];
-      issues.push(issue);
-      localStorage.setItem('issues', JSON.stringify(issues));
-    } else {
-      var issues = JSON.parse(localStorage.getItem('issues'));
-      issues.push(issue);
-      localStorage.setItem('issues', JSON.stringify(issues));
+    if(firebase.database().ref('issues').once('value') == Null) {
+        var issues = []
+        issues.push(issue)
+        firebase.database().ref('issues').push().set(issues).then(function(snapshot) {
+            print("Success!")
+        }, function(error) {
+            console.log('error' + error);
+        });
     }
-    
+    else {
+        var issues = firebase.database().ref('issues').once('value')
+        issues.push(issue);
+        firebase.database().ref('issues').push().set(issues);
+    }
+
     document.getElementById('issueInputForm').reset();
    
-    fetchIssues();
+    fetchIssuesFirebase();
     
-    e.preventDefault(); 
-  }
+    e.preventDefault();
+}
 
+saveToFirebaseIssue(e)
   
-  function setStatusClosed (id) {
-    var issues = JSON.parse(localStorage.getItem('issues'));
+  function setStatusClosedFirebase (id) {
+    var issues = firebase.database().ref('issues').once('value');
     
     for(var i = 0; i < issues.length; i++) {
       if (issues[i].id == id) {
@@ -97,13 +102,13 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
       }
     }
       
-    localStorage.setItem('issues', JSON.stringify(issues));
+    firebase.database().ref('issues').push().set(issues);
     
-    fetchIssues();
+    fetchIssuesFirebase();
   }
 
-  function deleteIssue (id) {
-    var issues = JSON.parse(localStorage.getItem('issues'));
+  function deleteIssueFirebase (id) {
+    var issues = firebase.database().ref('issues').once('value');
     
     for(var i = 0; i < issues.length; i++) {
       if (issues[i].id == id) {
@@ -111,7 +116,7 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
       }
     }
     
-    localStorage.setItem('issues', JSON.stringify(issues));
+    firebase.database().ref('issues').push().set(issues);
     
-    fetchIssues();
+    fetchIssuesFirebase();
   }

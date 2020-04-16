@@ -37,24 +37,13 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     var issueSeverity = document.getElementById('issueSeverityInput').value;
     var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
     var issueStatus = 'Open';
-    var issue = {
-      id: issueId,
-      description: issueDesc,
-      severity: issueSeverity,
-      assigned: issueAssignedTo,
-      status: issueStatus
-    }
-    
-    if (localStorage.getItem('issues') === null) {
-      var issues = [];
-      issues.push(issue);
-      localStorage.setItem('issues', JSON.stringify(issues));
-    } else {
-      var issues = JSON.parse(localStorage.getItem('issues'));
-      issues.push(issue);
-      localStorage.setItem('issues', JSON.stringify(issues));
-    }
-    
+    firebase.database().ref().child('issues').push({
+        issueId: issueId,
+        issueDesc: issueDesc,
+        issueSeverity: issueSeverity,
+        issueAssignedTo: issueAssignedTo,
+        issueStatus: issueStatus
+    })
     document.getElementById('issueInputForm').reset();
    
     fetchIssues();
@@ -64,17 +53,14 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
   
   function setStatusClosed (id) {
-    var issues = JSON.parse(localStorage.getItem('issues'));
-    
-    for(var i = 0; i < issues.length; i++) {
-      if (issues[i].id == id) {
-        issues[i].status = "Closed";
-      }
-    }
-      
-    localStorage.setItem('issues', JSON.stringify(issues));
-    
-    fetchIssues();
+    const dbRefObject = database.ref().child('issues');
+    dbRefObject.child('issues').orderByChild('issuesId').equalTo(id).on('value', function(snapshot) {
+        snapshot.forEach(function(data){
+            dbRefObject.child("issues/" + data.key+"/issueStatus").set("Closed");
+            console.log(data.val());
+        });
+    });
+    fetchDatabaseInfo();
   }
 
   function deleteIssue (id) {
@@ -88,7 +74,7 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     
     localStorage.setItem('issues', JSON.stringify(issues));
     
-    fetchIssues();
+    fetchDatabaseInfo();
   }
 
   function fetchDatabaseInfo (database) {
@@ -101,7 +87,7 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
             preObject.innerHTML +=   '<div class="well">'+
             '<hr>' +
             '<h6>Issue ID: ' + childNodes.val().issueId + '</h6>'+
-            '<p><span class="label label-info">' + childNodes.val().issueStatu + '</span></p>'+
+            '<p><span class="label label-info">' + childNodes.val().issueStatus + '</span></p>'+
             '<h3>' + childNodes.val().issueDesc + '</h3>'+
             '<p><span class="glyphicon glyphicon-time"></span> ' + childNodes.val().issueSeverity + ' | '+
             '<span class="glyphicon glyphicon-user"></span> ' + childNodes.val().issueAssignedTo + '</p>'+
@@ -114,8 +100,4 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
       // The fetch failed.
       console.error(error);
     }); 
-  }
-
-  function writeToDatabase (issue, database) {
-
   }

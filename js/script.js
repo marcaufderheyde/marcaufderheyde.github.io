@@ -123,11 +123,12 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
     firebase.database().ref('subscription-entries').push().set(emailObject)
         .then(function(snapshot) {
-            success(); // some success method
+            print("Success");
         }, function(error) {
             console.log('error' + error);
-            error(); // some error method
+            print("Failure");
         });
 }
 
-saveToFirebase(email);
+document.getElementById('email').addEventListener('submit', saveToFirebase);
+

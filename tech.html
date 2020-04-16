@@ -26,6 +26,8 @@
   <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+
 </head>
 
 <body onload="fetchIssues()" id="page-top">
@@ -148,11 +150,11 @@
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+    var database = firebase.database();
 
     //Data Object Change Listener
     const preObject = document.getElementById('object');
-    const dbRefObject = firebase.database().ref().child('object');
+    const dbRefObject = database.ref().child('object');
     
     dbRefObject.on('value', snap => {
     

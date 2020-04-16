@@ -116,7 +116,9 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     fetchIssues();
   }
 
-  function saveToFirebase(email) {
+  function saveToFirebase(e) {
+    var email = document.getElementById('inputEmail').value;
+    prompt(email)
     var emailObject = {
         email: email
     };
@@ -130,5 +132,5 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
         });
 }
 
-document.getElementById('email').addEventListener('submit', saveToFirebase);
+document.getElementById('emailform').addEventListener('submit', saveToFirebase);
 

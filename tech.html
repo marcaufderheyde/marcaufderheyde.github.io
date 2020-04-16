@@ -19,6 +19,13 @@
 
   <script src="http://chancejs.com/chance.min.js"></script>
   <script src="js/script.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
 </head>
 
 <body onload="fetchIssues()" id="page-top">
@@ -112,12 +119,9 @@
         <p>&copy aufderheyde.me</p>
       </div>
   </div>
-  <form id="emailform" class="form-signin">
-    <h2 class="form-signin-heading">Subscribe to our mailing list!</h2>
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Subscribe!</button>
-  </form>
+
+    <pre id='object'></pre>
+
   </section>
 </section>
 
@@ -128,13 +132,6 @@
     </div>
     <!-- /.container -->
   </footer>
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-      https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
 
   <script>
     // Your web app's Firebase configuration
@@ -151,6 +148,21 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+
+    //Data Object Change Listener
+    const preObject = document.getElementById('object');
+    const dbRefObject = firebase.database().ref().child('object');
+    
+    dbRefObject.on('value', snap => {
+    
+    console.log(snap.val()); 
+    preObject.innerText = JSON.stringify(snap.val(), null, 3);
+    
+    }, function(error) {
+      // The fetch failed.
+      console.error(error);
+    }); 
+
   </script>
 
   <!-- Bootstrap core JavaScript -->

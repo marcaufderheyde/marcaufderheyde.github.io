@@ -115,22 +115,3 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     
     fetchIssues();
   }
-
-  function saveToFirebase(e) {
-    var email = document.getElementById('inputEmail').value;
-    prompt(email)
-    var emailObject = {
-        email: email
-    };
-
-    firebase.database().ref('subscription-entries').push().set(emailObject)
-        .then(function(snapshot) {
-            print("Success");
-        }, function(error) {
-            console.log('error' + error);
-            print("Failure");
-        });
-}
-
-document.getElementById('emailform').addEventListener('submit', saveToFirebase);
-

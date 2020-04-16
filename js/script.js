@@ -29,31 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function fetchIssues () {
-    var issues = JSON.parse(localStorage.getItem('issues'));
-    var issuesList = document.getElementById('issuesList');
-    
-    issuesList.innerHTML = '';
-    
-    for (var i = 0; i < issues.length; i++) {
-      var id = issues[i].id;
-      var desc = issues[i].description;
-      var severity = issues[i].severity;
-      var assignedTo = issues[i].assignedTo;
-      var status = issues[i].status;
-      
-      issuesList.innerHTML +=   '<div class="well">'+
-                                '<h6>Issue ID: ' + id + '</h6>'+
-                                '<p><span class="label label-info">' + status + '</span></p>'+
-                                '<h3>' + desc + '</h3>'+
-                                '<p><span class="glyphicon glyphicon-time"></span> ' + severity + ' '+
-                                '<span class="glyphicon glyphicon-user"></span> ' + assignedTo + '</p>'+
-                                '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosed(\''+id+'\')">Close</a> '+
-                                '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssue(\''+id+'\')">Delete</a>'+
-                                '</div>';
-    }
-  }
-
 document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
 
   function saveIssue(e) {
@@ -66,7 +41,7 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
       id: issueId,
       description: issueDesc,
       severity: issueSeverity,
-      assignedTo: issueAssignedTo,
+      assigned: issueAssignedTo,
       status: issueStatus
     }
     
@@ -114,4 +89,33 @@ document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     localStorage.setItem('issues', JSON.stringify(issues));
     
     fetchIssues();
+  }
+
+  function fetchDatabaseInfo (database) {
+    //Data Object Change Listener
+    const preObject = document.getElementById('issuesList');
+    const dbRefObject = database.ref().child('issues');
+    
+    dbRefObject.on('value', function(snap) {
+        snap.forEach(function(childNodes){
+            preObject.innerHTML +=   '<div class="well">'+
+            '<hr>' +
+            '<h6>Issue ID: ' + childNodes.val().issueId + '</h6>'+
+            '<p><span class="label label-info">' + childNodes.val().issueStatu + '</span></p>'+
+            '<h3>' + childNodes.val().issueDesc + '</h3>'+
+            '<p><span class="glyphicon glyphicon-time"></span> ' + childNodes.val().issueSeverity + ' | '+
+            '<span class="glyphicon glyphicon-user"></span> ' + childNodes.val().issueAssignedTo + '</p>'+
+            '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosed(\''+childNodes.val().issueId+'\')">Close</a> '+
+            '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssue(\''+childNodes.val().issueId+'\')">Delete</a>'+
+            '<hr><br>' +
+            '</div>';
+        })    
+    }, function(error) {
+      // The fetch failed.
+      console.error(error);
+    }); 
+  }
+
+  function writeToDatabase (issue, database) {
+
   }

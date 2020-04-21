@@ -84,6 +84,7 @@ function loginDetails() {
     if(firebaseUser) {
       document.getElementById('issueInputForm').innerHTML = '<h3>Add New Issue:</h3><form id="issueInputForm"><div class="form-group"><label for="issueDescInput">Description</label><input type="text" class="form-control" id="issueDescInput" placeholder="Describe the issue ..."></div><div class="form-group"><label for="issueDescInput">Severity</label><select class="form-control" id="issueSeverityInput"><option value="Low">Low</option><option value="Medium">Medium</option><option value="High">High</option></select></div><div class="form-group"><label for="issueDescInput">Assigned To</label><input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter responsible ..."></div><button type="submit" class="btn btn-primary">Add</button>';
       document.getElementById('btnLogout').innerHTML = '<button id="btnSignUp" class="btn btn-danger">Log out</button>';
+      document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     } else {
       console.log('not logged in');
       document.getElementById('issueInputForm').innerHTML = '<h3>Current Issues:</h3>';
@@ -129,7 +130,6 @@ function loginDetails() {
   }
 
   function fetchDatabaseInfo (database) {
-    document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     //Data Object Change Listener
     const preObject = document.getElementById('issuesList');
     const dbRefObject = database.ref().child('issues');

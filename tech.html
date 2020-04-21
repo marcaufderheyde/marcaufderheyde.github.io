@@ -123,27 +123,7 @@
     </div>
   </div>
   <div class="container">
-    <div class="jumbotron">
-        <h3>Add New Issue:</h3>
-        <form id="issueInputForm">
-          <div class="form-group">
-            <label for="issueDescInput">Description</label>
-            <input type="text" class="form-control" id="issueDescInput" placeholder="Describe the issue ...">
-          </div>
-          <div class="form-group">
-            <label for="issueDescInput">Severity</label>
-             <select class="form-control" id="issueSeverityInput">
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select> 
-          </div>
-          <div class="form-group">
-            <label for="issueDescInput">Assigned To</label>
-            <input type="text" class="form-control" id="issueAssignedToInput" placeholder="Enter responsible ...">
-          </div>
-          <button type="submit" class="btn btn-primary">Add</button>
-        </form>
+    <div id="issueInputForm" class="jumbotron">
       </div>
       <hr>
       <div class="row">
@@ -172,6 +152,7 @@
   <script>
     document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
     fetchDatabaseInfo(firebaseSetup());
+    loginDetails();
   </script>
 
   <!-- Bootstrap core JavaScript -->

@@ -18,7 +18,6 @@
   <link href="css/scrolling-nav.css" rel="stylesheet">
 
   <script src="http://chancejs.com/chance.min.js"></script>
-  <script src="js/script.js"></script>
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
@@ -27,6 +26,8 @@
       https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+  <script src="js/script.js"></script>
 
 </head>
 
@@ -77,7 +78,7 @@
         <br>
         <div class="row">
             <div class="col">
-                <a href="#content" class="button js-scroll-trigger" style="vertical-align:middle">Scroll...</a>
+                <a href="#content" class="link js-scroll-trigger" style="vertical-align:middle">Issues...</a>
             </div>
             </div>
       </div>
@@ -87,6 +88,40 @@
 <!-- Page Content -->
 <section class="py-5">
 <section id="content">
+  <div class="container">
+    <div class="jumbotron">
+      <h3>Sign in to add a new issue</h3>
+      <br>
+        <div class="row">
+          <div class="col">
+            <input id="txtEmail" type="email" placeholder="Email" style="width: 100%;">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col">
+            <input id="txtPassword" type="password" placeholder="Password" style="width: 100%;"s>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <button id="btnLogin" class="btn btn-primary">
+              Log in
+            </button>
+          </div>
+          <div class="col">
+            <button id="btnSignUp" class="btn btn-secondary">
+              Sign up
+            </button>
+          </div>
+          <div class="col">
+            <div id="btnLogout"></div>
+          </div>
+        </div>
+    </div>
+  </div>
   <div class="container">
     <div class="jumbotron">
         <h3>Add New Issue:</h3>
@@ -110,6 +145,7 @@
           <button type="submit" class="btn btn-primary">Add</button>
         </form>
       </div>
+      <hr>
       <div class="row">
         <div class="col-lg-12">
           <div id="issuesList">
@@ -133,94 +169,8 @@
     <!-- /.container -->
   </footer>
 
-  <script>
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDOz6IE7U5GTnsUA4k2y0VSgOpQdND8J2Q",
-    authDomain: "aufderheyde-4fbae.firebaseapp.com",
-    databaseURL: "https://aufderheyde-4fbae.firebaseio.com",
-    projectId: "aufderheyde-4fbae",
-    storageBucket: "aufderheyde-4fbae.appspot.com",
-    messagingSenderId: "392147905138",
-    appId: "1:392147905138:web:f6d47f074a1b8f916230eb",
-    measurementId: "G-7NZJ6HL34T"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
-
-  fetchDatabaseInfo();
-
-  document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
-
-  function saveIssue(e) {
-    var issueId = chance.guid();
-    var issueDesc = document.getElementById('issueDescInput').value;
-    var issueSeverity = document.getElementById('issueSeverityInput').value;
-    var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
-    var issueStatus = 'Open';
-    database.ref().child('issues').push({
-        issueId: issueId,
-        issueDesc: issueDesc,
-        issueSeverity: issueSeverity,
-        issueAssignedTo: issueAssignedTo,
-        issueStatus: issueStatus
-    })
-    document.getElementById('issueInputForm').reset();
-   
-    fetchDatabaseInfo();
-    
-    e.preventDefault(); 
-  }
-
-  
-  function setStatusClosed (key) {
-    database.ref().child('issues').orderByKey().equalTo(key).on('value', function(snapshot) {
-        console.log(snapshot.val()[key]);
-    })
-    var updates = {};
-    updates['/issues/' + key + '/issueStatus'] = 'Closed';
-    database.ref().update(updates)
-    fetchDatabaseInfo();
-  }
-
-  function deleteIssue (key) {
-    database.ref('/issues/' + key).remove();
-    fetchDatabaseInfo();
-  }
-
-  function fetchDatabaseInfo () {
-    //Data Object Change Listener
-    const preObject = document.getElementById('issuesList');
-    const dbRefObject = database.ref().child('issues');
-    preObject.innerHTML = "";
-    dbRefObject.on('value', function(snap) {
-        snap.forEach(function(childNodes){
-            preObject.innerHTML +=   '<div class="well">'+
-            '<hr>' +
-            '<h6>Issue ID: ' + childNodes.val().issueId + '</h6>'+
-            '<p><span class="label label-info">' + childNodes.val().issueStatus + '</span></p>'+
-            '<h3>' + childNodes.val().issueDesc + '</h3>'+
-            '<p><span class="glyphicon glyphicon-time"></span> ' + childNodes.val().issueSeverity + ' | '+
-            '<span class="glyphicon glyphicon-user"></span> ' + childNodes.val().issueAssignedTo + '</p>'+
-            '<a href="#content" class="btn btn-warning js-scroll-trigger" onclick="setStatusClosed(\''+childNodes.key+'\')">Close</a> '+
-            '<a href="#content" class="btn btn-danger js-scroll-trigger" onclick="deleteIssue(\''+childNodes.key+'\')">Delete</a>'+
-            '<hr><br>' +
-            '</div>';
-        })    
-    }, function(error) {
-      // The fetch failed.
-      console.error(error);
-    }); 
-  }
-
-
-  </script>
-
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="http://chancejs.com/chance.min.js"></script>
-  <script src="js/script.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Plugin JavaScript -->
@@ -228,7 +178,5 @@
 
   <!-- Custom JavaScript for this theme -->
   <script src="js/scrolling-nav.js"></script>
-
-  <script src="http://chancejs.com/chance.min.js"></script>
 </body>
 </html>

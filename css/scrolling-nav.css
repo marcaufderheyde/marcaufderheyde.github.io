@@ -25,7 +25,7 @@ img {
   background-repeat: no-repeat;
 }
 
-.button {
+a link {
   display: inline-block;
   border-radius: 4px;
   background-color: #f4511e;
@@ -40,14 +40,14 @@ img {
   margin: 5px;
 }
 
-.button span {
+a link span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.button span:after {
+a link span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -56,7 +56,7 @@ img {
   transition: 0.5s;
 }
 
-.button:hover span {
+a link:hover span {
   padding-right: 25px;
 }
 
@@ -65,7 +65,7 @@ img {
   right: 0;
 }
 
-.btn {
+.link {
   background-color: DodgerBlue;
   border: none;
   color: white;
@@ -75,7 +75,7 @@ img {
 }
 
 /* Darker background on mouse-over */
-.btn:hover {
+.link:hover {
   background-color: RoyalBlue;
 }
 

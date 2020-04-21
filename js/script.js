@@ -94,12 +94,13 @@ function loginDetails() {
 }
 
   function saveIssue(e) {
+    var database = firebase.database();
     var issueId = chance.guid();
     var issueDesc = document.getElementById('issueDescInput').value;
     var issueSeverity = document.getElementById('issueSeverityInput').value;
     var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
     var issueStatus = 'Open';
-    firebase.database.ref().child('issues').push({
+    database.ref().child('issues').push({
         issueId: issueId,
         issueDesc: issueDesc,
         issueSeverity: issueSeverity,
@@ -115,6 +116,7 @@ function loginDetails() {
 
   
   function setStatusClosed (key) {
+    var database = firebase.database();
     database.ref().child('issues').orderByKey().equalTo(key).on('value', function(snapshot) {
         console.log(snapshot.val()[key]);
     })
@@ -125,6 +127,7 @@ function loginDetails() {
   }
 
   function deleteIssue (key) {
+    var database = firebase.database();
     database.ref('/issues/' + key).remove();
     fetchDatabaseInfo();
   }

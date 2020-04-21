@@ -132,7 +132,8 @@ function loginDetails() {
     fetchDatabaseInfo();
   }
 
-  function fetchDatabaseInfo (database) {
+  function fetchDatabaseInfo () {
+    var database = firebase.database();
     //Data Object Change Listener
     const preObject = document.getElementById('issuesList');
     const dbRefObject = database.ref().child('issues');

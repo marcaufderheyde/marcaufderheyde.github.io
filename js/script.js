@@ -29,24 +29,24 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
 // Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyDOz6IE7U5GTnsUA4k2y0VSgOpQdND8J2Q",
-    authDomain: "aufderheyde-4fbae.firebaseapp.com",
-    databaseURL: "https://aufderheyde-4fbae.firebaseio.com",
-    projectId: "aufderheyde-4fbae",
-    storageBucket: "aufderheyde-4fbae.appspot.com",
-    messagingSenderId: "392147905138",
-    appId: "1:392147905138:web:f6d47f074a1b8f916230eb",
-    measurementId: "G-7NZJ6HL34T"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database();
-
-  fetchDatabaseInfo();
-
-  document.getElementById('issueInputForm').addEventListener('submit', saveIssue);
+function firebaseSetup() {
+    var firebaseConfig = {
+        apiKey: "AIzaSyDOz6IE7U5GTnsUA4k2y0VSgOpQdND8J2Q",
+        authDomain: "aufderheyde-4fbae.firebaseapp.com",
+        databaseURL: "https://aufderheyde-4fbae.firebaseio.com",
+        projectId: "aufderheyde-4fbae",
+        storageBucket: "aufderheyde-4fbae.appspot.com",
+        messagingSenderId: "392147905138",
+        appId: "1:392147905138:web:f6d47f074a1b8f916230eb",
+        measurementId: "G-7NZJ6HL34T"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
+    return database;
+}
 
   // Get Login elements
   const txtEmail = document.getElementById('txtEmail');
@@ -125,7 +125,7 @@ var firebaseConfig = {
     fetchDatabaseInfo();
   }
 
-  function fetchDatabaseInfo () {
+  function fetchDatabaseInfo (database) {
     //Data Object Change Listener
     const preObject = document.getElementById('issuesList');
     const dbRefObject = database.ref().child('issues');

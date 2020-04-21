@@ -99,7 +99,7 @@ function loginDetails() {
     var issueSeverity = document.getElementById('issueSeverityInput').value;
     var issueAssignedTo = document.getElementById('issueAssignedToInput').value;
     var issueStatus = 'Open';
-    database.ref().child('issues').push({
+    firebase.database.ref().child('issues').push({
         issueId: issueId,
         issueDesc: issueDesc,
         issueSeverity: issueSeverity,

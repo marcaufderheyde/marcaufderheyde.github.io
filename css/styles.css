@@ -4023,8 +4023,8 @@ input[type=button].btn-block {
   list-style: none;
 }
 .navbar-nav .nav-link {
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 4rem;
+  padding-left: 4rem;
   display: flex;
   justify-content: space-between;
 }
@@ -10151,10 +10151,10 @@ img::-moz-selection {
     height: 1.5rem;
   }
   #mainNav .navbar-nav .nav-item {
-    margin-right: 1rem;
+    margin-right: 42rem;
   }
   #mainNav .navbar-nav .nav-item:last-child {
-    margin-right: 0;
+    margin-right: 4rem;
   }
 }
 header.masthead {

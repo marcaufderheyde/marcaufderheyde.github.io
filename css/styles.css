@@ -10163,6 +10163,11 @@ header.masthead {
   text-align: center;
   color: #fff;
   background-image: url("../assets/img/dl-bg-shapes-final.jpg");
+  display: grid;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;

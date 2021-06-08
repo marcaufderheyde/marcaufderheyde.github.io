@@ -10158,15 +10158,14 @@ img::-moz-selection {
   }
 }
 header.masthead {
-  padding-top: 10.5rem;
-  padding-bottom: 6rem;
   text-align: center;
   color: #fff;
   background-image: url("../assets/img/dl-bg-shapes-final.jpg");
-  display: grid;
+  display: flex;
+  align-items: center;
   height: 100%;
   max-width: 100%;
-  max-height: 100vh;
+  min-height: 100vh;
   margin: auto;
   background-repeat: no-repeat;
   background-attachment: scroll;
